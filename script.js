@@ -32,6 +32,12 @@ document.addEventListener("keydown", function (e) {
   }
 });
 
+const btnScrollTo = document.querySelector(".btn--scroll-to");
+const section1 = document.querySelector("#section--1");
+btnScrollTo.addEventListener("click", function (e) {
+  section1.scrollIntoView({ behavior: "smooth" });
+});
+
 /*
 // Lectures
 console.log(document.documentElement);
@@ -104,7 +110,6 @@ logo.classList.remove("c");
 logo.classList.toggle("c");
 logo.classList.contains("c");
 // Do NOT use logo.class = "" // Because overwrites the previous classes
- */
 
 const btnScrollTo = document.querySelector(".btn--scroll-to");
 const section1 = document.querySelector("#section--1");
@@ -136,4 +141,39 @@ btnScrollTo.addEventListener("click", function (e) {
   // });
 
   section1.scrollIntoView({ behavior: "smooth" });
+});
+
+// Events
+const h1 = document.querySelector("h1");
+const alertH1 = function (e) {
+  alert("addEventListener: Great! You are reading the heading");
+};
+h1.addEventListener("mouseenter", alertH1);
+
+setTimeout(() => {
+  h1.removeEventListener("mouseenter", alertH1);
+}, 3500);
+
+// h1.onmouseenter = function (e) {
+//   alert("addEventListener: Great! You are reading the heading");
+// };
+ */
+
+// rgb(255,255,255)
+const randomInt = (min, max) =>
+  Math.floor(Math.random() * (max - min + 1) + min);
+const randomColor = () =>
+  `rgb(${randomInt(0, 255)}, ${randomInt(0, 255)}, ${randomInt(0, 255)})`;
+// console.log(randomColor(0, 255));
+
+document.querySelector(".nav__link").addEventListener("click", function (e) {
+  this.style.backgroundColor = randomColor();
+});
+
+document.querySelector(".nav__links").addEventListener("click", function (e) {
+  this.style.backgroundColor = randomColor();
+});
+
+document.querySelector(".nav").addEventListener("click", function (e) {
+  this.style.backgroundColor = randomColor();
 });
