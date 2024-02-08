@@ -7,3 +7,5 @@
 ##
 
 #### To check its funtionality, you need to preview the HTML file.
+
+![alt text](image.png)
