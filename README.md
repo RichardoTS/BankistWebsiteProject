@@ -9,3 +9,5 @@
 #### To check its funtionality, you need to preview the HTML file.
 
 ![alt text](image.png)
+
+###### You can check the demo on the following link: bankist-dom.netlify.app
