@@ -12,6 +12,12 @@ const tabsContent = document.querySelectorAll(".operations__content");
 const nav = document.querySelector(".nav");
 const header = document.querySelector(".header");
 const navHeight = nav.getBoundingClientRect().height;
+const allSections = document.querySelectorAll(".section");
+const imgTargets = document.querySelectorAll("img[data-src]");
+const slides = document.querySelectorAll(".slide");
+// const slider = document.querySelector(".slider");
+const btnLeft = document.querySelector(".slider__btn--left");
+const btnRight = document.querySelector(".slider__btn--right");
 
 ///////////////////////////////////////
 // Modal window
@@ -133,7 +139,7 @@ const headerObserver = new IntersectionObserver(stickyNav, {
 headerObserver.observe(header);
 
 // Reveal sections
-const allSections = document.querySelectorAll(".section");
+
 const revealSection = function (entries, observer) {
   const [entry] = entries;
   // console.log(entry);
@@ -148,14 +154,12 @@ const sectionObserver = new IntersectionObserver(revealSection, {
   threshold: 0.15,
 });
 
-allSections.forEach(function (section) {
-  sectionObserver.observe(section);
-  section.classList.add("section--hidden");
-});
+// allSections.forEach(function (section) {
+//   sectionObserver.observe(section);
+//   section.classList.add("section--hidden");
+// });
 
 // Lazy Loading images
-const imgTargets = document.querySelectorAll("img[data-src]");
-// console.log(imgTargets);
 
 const loadImg = function (entries, observer) {
   const [entry] = entries;
@@ -180,6 +184,42 @@ const imgObserver = new IntersectionObserver(loadImg, {
 });
 
 imgTargets.forEach(img => imgObserver.observe(img));
+
+// Slider
+// let curSlide = 0;
+// const maxSlide = slides.length;
+
+let curSlide = 0;
+const maxSlide = slides.length;
+
+// slider.style.transform = "scale(0.4) translateX(-800px)";
+// slider.style.overflow = "visible";
+
+slides.forEach((s, i) => (s.style.transform = `translateX(${100 * i}%)`));
+
+const goToSlide = function (slide) {
+  slides.forEach(
+    (s, i) => (s.style.transform = `translateX(${100 * (i - slide)}%)`)
+  );
+};
+
+goToSlide(0);
+
+// Next slide
+const nextSlide = function () {
+  curSlide === maxSlide - 1 ? (curSlide = 0) : curSlide++;
+
+  goToSlide(curSlide);
+};
+
+const prevSlide = function () {
+  curSlide === 0 ? (curSlide = maxSlide - 1) : curSlide--;
+
+  goToSlide(curSlide);
+};
+
+btnRight.addEventListener("click", nextSlide);
+btnLeft.addEventListener("click", prevSlide);
 
 /*
 //////////////////////////////
