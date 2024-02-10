@@ -434,7 +434,6 @@ window.addEventListener("scroll", function () {
   if (this.window.scrollY > initialCoords.top) nav.classList.add("sticky");
   else nav.classList.remove("sticky");
 });
- */
 
 // Sticky navigation: Intersection Observer API
 // const obsCallback = function (entries, observer) {
@@ -452,3 +451,18 @@ window.addEventListener("scroll", function () {
 // observer.observe(section1);
 
 // console.log(navHeight);
+ */
+
+// document.addEventListener("DOMContentLoaded", function (e) {
+//   console.log("HTML parsed and DOM tree built", e);
+// });
+
+// window.addEventListener("load", function (e) {
+//   console.log("Page fully loaded", e);
+// });
+
+// window.addEventListener("beforeunload", function (e) {
+//   e.preventDefault();
+//   console.log(e);
+//   e.returnValue = "";
+// });
